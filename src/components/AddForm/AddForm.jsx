@@ -7,7 +7,7 @@ const AddForm = () => {
     const [username, setUsername] = useState('');
     const handleSubmit = async () => {
         const newUser = { id: uuidv4(), name: username }
-        await fetch('http://localhost:3000/users', {
+        await fetch('http://localhost:3001/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
@@ -15,13 +15,18 @@ const AddForm = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group>
-                <Form.Control autoFocus type='text' value={username} onChange={(e) => setUsername(e.target.value)}>
-                </Form.Control>
-                <Button variant='outline-dark' type='submit'><BsPlusLg /></Button>
-            </Form.Group>
-        </Form>
+        <>
+            <h1>Draft React</h1>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <div className="d-flex">
+                        <Form.Control autoFocus type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <Button variant='outline-dark' type='submit'><BsPlusLg /></Button>
+                    </div>
+                </Form.Group>
+            </Form>
+        </>
+
     )
 }
 

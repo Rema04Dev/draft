@@ -1,8 +1,16 @@
 {
   "users": [
     {
-      "id": "5720f434-0494-4ec0-9a7a-9cd457b0428b",
-      "name": "Bill"
+      "id": "7c8ba758-aa76-4286-b5fd-06477b84ae0f",
+      "name": "Alex"
+    },
+    {
+      "id": "611ca9a8-49ef-4080-80b6-d259f87ff8a5",
+      "name": "Michel"
+    },
+    {
+      "id": "5b924892-024f-4e54-9c5f-37e095ba066b",
+      "name": "Frank"
     }
   ]
 }

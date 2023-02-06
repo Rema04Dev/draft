@@ -14,6 +14,7 @@ const usersReducer = (state = initialState, action) => {
         case 'USERS_FETCHED': {
             return {
                 ...state,
+                users: action.payload,
                 usersLoadingStatus: 'idle'
             }
         }
@@ -21,6 +22,14 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 usersLoadingStatus: 'error'
+            }
+        }
+
+        case 'USER_DELETE': {
+            const newList = state.users.filter(user => user.id !== action.payload)
+            return {
+                ...state,
+                users: newList
             }
         }
         default: return state;
