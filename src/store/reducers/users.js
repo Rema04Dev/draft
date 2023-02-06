@@ -3,7 +3,7 @@ const initialState = {
     usersLoadingStatus: 'idle',
 }
 
-const usersReducer = (state = initialState, action) => {
+const users = (state = initialState, action) => {
     switch (action.type) {
         case 'USERS_FETCHING': {
             return {
@@ -24,7 +24,6 @@ const usersReducer = (state = initialState, action) => {
                 usersLoadingStatus: 'error'
             }
         }
-
         case 'USER_DELETE': {
             const newList = state.users.filter(user => user.id !== action.payload)
             return {
@@ -36,4 +35,4 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export default usersReducer;
+export default users;

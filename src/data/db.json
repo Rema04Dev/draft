@@ -1,16 +1,48 @@
 {
   "users": [
     {
-      "id": "7c8ba758-aa76-4286-b5fd-06477b84ae0f",
-      "name": "Alex"
+      "id": "934ec893-1d07-439f-a600-c7555611da4f",
+      "name": "Bill",
+      "age": 52,
+      "ganre": "rap"
     },
     {
-      "id": "611ca9a8-49ef-4080-80b6-d259f87ff8a5",
-      "name": "Michel"
+      "id": "0f768b07-1ec8-4469-8a58-b101b2d46f60",
+      "name": "Jane",
+      "age": 22,
+      "ganre": "rock"
     },
     {
-      "id": "5b924892-024f-4e54-9c5f-37e095ba066b",
-      "name": "Frank"
+      "id": "5d29741c-c002-43b2-b678-55be01d92c3c",
+      "name": "Max",
+      "age": 26,
+      "ganre": "rap"
+    },
+    {
+      "id": "e22d4b87-05a4-40f1-9770-865a77e98959",
+      "name": "Marcus",
+      "age": 44,
+      "ganre": "rap"
+    },
+    {
+      "id": "5934cd27-ecb1-47e2-a485-5bba70720e13",
+      "name": "Joe",
+      "age": 62,
+      "ganre": "rock"
+    }
+  ],
+  "filters": [
+    {
+      "label": "rock",
+      "cssStyle": "success"
+    },
+    {
+      "label": "rap",
+      "cssStyle": "warning"
+    },
+    {
+      "label": "classic",
+      "cssStyle": "primary"
     }
   ]
 }

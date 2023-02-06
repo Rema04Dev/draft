@@ -1,10 +1,23 @@
+import { createSelector } from 'reselect'
 import { BsFillTrashFill } from 'react-icons/bs';
 import { ListGroup, Spinner } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { usersFetched, usersFetching, usersFetchingError, userDelete } from '../../store/actions';
 const UserList = () => {
-    const { users, usersLoadingStatus } = useSelector(state => state);
+    const filteredUsersSelector = createSelector(
+        (state) => state.filters.activeFilter,
+        (state) => state.users.users,
+        (filter, users) => {
+            if (filter === 'all') {
+                return users;
+            } else {
+                return users.filter(user => user.ganre === filter)
+            }
+        }
+    )
+    const filteredUsers = useSelector(filteredUsersSelector);
+    const { users, usersLoadingStatus } = useSelector(state => state.users);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(usersFetching());
@@ -41,11 +54,13 @@ const UserList = () => {
     return (
         <ListGroup>
             {
-                users.length === 0
+                filteredUsers.length === 0
                     ? <h1>There's no one user</h1>
-                    : users.map(({ id, name }) => (
-                        <ListGroup.Item key={id} className="d-flex justify-content-between">
-                            {name}
+                    : filteredUsers.map(({ id, name, age, ganre }) => (
+                        <ListGroup.Item key={id} className={`d-flex justify-content-between`}>
+                            <b>{name}</b>
+                            <p>age: {age}</p>
+                            <p>favorite music: {ganre}</p>
                             <button onClick={() => handleDelete(id)}><BsFillTrashFill /></button>
                         </ListGroup.Item>
                     ))
