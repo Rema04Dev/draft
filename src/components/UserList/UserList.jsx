@@ -21,7 +21,7 @@ const UserList = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         // dispatch(usersFetching()); ниже применяем redux-thunk, поэтому без вызова
-        dispatch(usersFetching)
+        dispatch(usersFetching())
         const getUsers = async () => {
             try {
                 const response = await fetch('http://localhost:3001/users')
