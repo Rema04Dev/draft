@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { BsPlusLg } from 'react-icons/bs'
 import { v4 as uuidv4 } from 'uuid';
+import { useFormik } from 'formik'
 const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const setRandomProperties = () => {
     const age = getRandomNumber(18, 70)
@@ -10,25 +11,43 @@ const setRandomProperties = () => {
     return { age, ganre }
 }
 
-console.log(setRandomProperties())
 const AddForm = () => {
-    const [username, setUsername] = useState('');
-    const handleSubmit = async () => {
-        const newUser = { id: uuidv4(), name: username, ...setRandomProperties() }
-        await fetch('http://localhost:3001/users', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newUser)
-        })
-    }
+    // const [username, setUsername] = useState('');
+    // const handleSubmit = async () => {
+    //     const newUser = { id: uuidv4(), name: username, ...setRandomProperties() }
+    //     await fetch('http://localhost:3001/users', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify(newUser)
+    //     })
+    // }
+
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+        },
+        onSubmit: async (values) => {
+            const newUser = { id: uuidv4(), name: values.username, ...setRandomProperties() }
+            await fetch('http://localhost:3001/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newUser)
+            })
+        }
+    });
 
     return (
         <>
             <h1>Draft React</h1>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={formik.handleSubmit}>
                 <Form.Group>
                     <div className="d-flex">
-                        <Form.Control autoFocus type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <Form.Control
+                            autoFocus
+                            type='text'
+                            name="username"
+                            value={formik.values.username}
+                            onChange={formik.handleChange} />
                         <Button variant='outline-dark' type='submit'><BsPlusLg /></Button>
                     </div>
                 </Form.Group>

@@ -1,16 +1,16 @@
 {
   "users": [
     {
-      "id": "51114d6f-a3bb-4ac2-bab4-d900ffdada31",
-      "name": "Joe",
-      "age": 22,
+      "id": "632e892f-dece-4a94-864d-709c1940f421",
+      "name": "Alex",
+      "age": 69,
       "ganre": "rap"
     },
     {
-      "id": "15be8f77-6d47-4b12-b677-93a30c607ce5",
-      "name": "MAX",
-      "age": 23,
-      "ganre": "rock"
+      "id": "6055b832-c602-415b-91a2-9bfa2f703a2c",
+      "name": "Frank",
+      "age": 20,
+      "ganre": "rap"
     }
   ],
   "filters": [
