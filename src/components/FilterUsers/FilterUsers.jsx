@@ -35,11 +35,11 @@ const FilterUsers = () => {
         }
 
         return coll.map(({ label, cssStyle }) => {
-            const btnCss = cn({ 'active': label === activeFilter })
+            const btnCss = cn({ 'dark': label === activeFilter })
 
             return <Button
                 className={btnCss}
-                onClick={() => dispatch(filterChanged())}
+                onClick={() => dispatch(filterChanged(label))}
                 key={label}
                 id={label}
                 variant={cssStyle}>
