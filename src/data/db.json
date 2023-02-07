@@ -1,16 +1,28 @@
 {
   "users": [
     {
-      "id": "632e892f-dece-4a94-864d-709c1940f421",
-      "name": "Alex",
-      "age": 69,
+      "id": "b2ec6ea1-5357-4709-b670-0e02ae894509",
+      "name": "Bill",
+      "age": 33,
       "ganre": "rap"
     },
     {
-      "id": "6055b832-c602-415b-91a2-9bfa2f703a2c",
-      "name": "Frank",
-      "age": 20,
-      "ganre": "rap"
+      "id": "998ece0e-f3e2-4e7e-9ae0-d71e10d935de",
+      "name": "Andrew",
+      "age": 36,
+      "ganre": "rock"
+    },
+    {
+      "id": "6c24d9c4-4d3f-42b7-84ec-4bda6ac0f2a5",
+      "name": "Carmela",
+      "age": 31,
+      "ganre": "classic"
+    },
+    {
+      "id": "b3d7af5a-006e-47c6-ae2a-62daef03e780",
+      "name": "admin",
+      "age": 45,
+      "ganre": "classic"
     }
   ],
   "filters": [

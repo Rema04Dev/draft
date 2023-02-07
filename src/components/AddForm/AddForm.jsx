@@ -1,9 +1,10 @@
-import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { BsPlusLg } from 'react-icons/bs'
 import { v4 as uuidv4 } from 'uuid';
 import { useFormik } from 'formik'
-const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
+import { useDispatch } from 'react-redux';
+import { userCreated } from '../../store/slices/usersSlice'
+const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const setRandomProperties = () => {
     const age = getRandomNumber(18, 70)
     const ganres = ['rock', 'rap', 'classic']
@@ -12,16 +13,7 @@ const setRandomProperties = () => {
 }
 
 const AddForm = () => {
-    // const [username, setUsername] = useState('');
-    // const handleSubmit = async () => {
-    //     const newUser = { id: uuidv4(), name: username, ...setRandomProperties() }
-    //     await fetch('http://localhost:3001/users', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(newUser)
-    //     })
-    // }
-
+    const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
             username: '',
@@ -33,6 +25,8 @@ const AddForm = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newUser)
             })
+            dispatch(userCreated(newUser))
+            values.username = '';
         }
     });
 

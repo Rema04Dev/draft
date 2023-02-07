@@ -2,13 +2,18 @@ import cn from 'classnames';
 import { Button, ButtonGroup, Spinner } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filtersFetching, filtersFetched, filtersFetchingError, filterChanged } from '../../store/actions/index';
+import {
+    filtersFetching,
+    filtersFetched,
+    filtersFetchingError,
+    filterChanged
+} from '../../store/slices/filtersSlice';
 
 const FilterUsers = () => {
     const api = 'http://localhost:3001/filters';
     const { filters, filtersLoadingStatus, activeFilter } = useSelector(state => state.filters)
     const dispatch = useDispatch();
-
+    console.log(filters)
     useEffect(() => {
         dispatch(filtersFetching());
         const getFilters = async () => {
@@ -45,7 +50,6 @@ const FilterUsers = () => {
                 variant={cssStyle}>
                 {label}
             </Button>
-
         })
     }
 

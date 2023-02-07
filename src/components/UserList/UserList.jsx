@@ -3,11 +3,12 @@ import { BsFillTrashFill } from 'react-icons/bs';
 import { ListGroup, Spinner } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { usersFetched, usersFetching, usersFetchingError, userDelete } from '../../store/actions';
+import { usersFetched, usersFethcing, usersFetchingError, userDelete } from '../../store/slices/usersSlice';
+import { selectAll } from '../../store/slices/usersSlice'
 const UserList = () => {
     const filteredUsersSelector = createSelector(
         (state) => state.filters.activeFilter,
-        (state) => state.users.users,
+        selectAll,
         (filter, users) => {
             if (filter === 'all') {
                 return users;
@@ -20,8 +21,7 @@ const UserList = () => {
     const { usersLoadingStatus } = useSelector(state => state.users);
     const dispatch = useDispatch();
     useEffect(() => {
-        // dispatch(usersFetching()); ниже применяем redux-thunk, поэтому без вызова
-        dispatch(usersFetching())
+        dispatch(usersFethcing())
         const getUsers = async () => {
             try {
                 const response = await fetch('http://localhost:3001/users')
